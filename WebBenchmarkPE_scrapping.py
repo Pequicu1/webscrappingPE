@@ -46,15 +46,17 @@ total_score = driver.find_element(By.ID, "result-summary").text
 print("EL TEST HA RESULTADO: \n")
 print(total_score)
 
-items = driver.find_element(By.CLASS_NAME, "benchmarkbenchmark-done")
+items = driver.find_element(By.ID, "results").text
+print(items)
 
-for test in items:
-    title = driver.find_element(By.CLASS_NAME, "benchmark-name")
-    score = driver.find_element(By.CLASS_NAME, "score")
+# for test in items:
+#     title = driver.find_element(By.CLASS_NAME, "benchmark-name")
+#     score = driver.find_element(By.CLASS_NAME, "score")
 
-    info = [title, score]
-    print(info)
+#     info = [title, score]
+#     print(info)
 
+driver.quit()
 
 
 
