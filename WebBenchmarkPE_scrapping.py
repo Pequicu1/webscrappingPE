@@ -4,6 +4,8 @@
 # @author Ivan Lopez
 # @version 1.0 20/10/2022
 #
+#
+# Alba y Javi os quiero mucho un besito
 # --------------------------------
 #
 
@@ -69,7 +71,3 @@ with open(file_name,'w') as f:
 
 #Cierra pagina[DONE]
 driver.quit()
-
-
-
-
