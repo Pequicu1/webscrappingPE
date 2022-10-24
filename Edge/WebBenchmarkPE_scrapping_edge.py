@@ -12,14 +12,17 @@
 
 import datetime
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.edge.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
 url = "https://browserbench.org/JetStream/index.html"
-driver = webdriver.Edge()
+
+c = webdriver.EdgeOptions()
+c.add_argument("--inprivate")
+driver = webdriver.Edge(options=c)
 
 driver.get(url)
 

@@ -19,7 +19,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 url = "https://browserbench.org/JetStream/index.html"
-driver = webdriver.Chrome()
+
+c = webdriver.ChromeOptions()
+c.add_argument("--incognito")
+driver = webdriver.Chrome(options=c)
 
 driver.get(url)
 
