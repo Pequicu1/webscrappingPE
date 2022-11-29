@@ -77,7 +77,8 @@ with open(file_name, 'w') as f:
         f.write('\n')
         f.write(i)
     
-    f.write('\n' + (end - start))
+    f.write('\n')
+    f.write(str(end - start))
 
 # Cierra pagina[DONE]
 driver.quit()
