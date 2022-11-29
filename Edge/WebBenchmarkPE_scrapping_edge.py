@@ -9,7 +9,7 @@
 # --------------------------------
 #
 
-
+import time
 import datetime
 from selenium import webdriver
 from selenium.webdriver.edge.options import Options
@@ -17,6 +17,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+start = time.time()
 
 url = "https://browserbench.org/JetStream/index.html"
 
@@ -36,6 +37,8 @@ boton = espera.until(EC.visibility_of_element_located(
 
 espera2 = WebDriverWait(driver, 10000)
 fin = espera2.until(EC.visibility_of_element_located((By.CLASS_NAME, "done")))
+
+end = time.time()
 
 # recoger datos[DONE]
 
@@ -63,7 +66,7 @@ while (i < len(data_into_list)):
 # crea fichero con la hora actual [DONE]
 date = datetime.datetime.now()
 
-file_name = ('RES_PE_D%d_H%d_M%d_S%d.txt' %
+file_name = ('EDGE_RES_PE_D%d_H%d_M%d_S%d.txt' %
              (date.day, date.hour, date.minute, date.second))
 
 with open(file_name, 'w') as f:
@@ -73,6 +76,8 @@ with open(file_name, 'w') as f:
     for i in scores:
         f.write('\n')
         f.write(i)
+    
+    f.write('\n' + (end - start))
 
 # Cierra pagina[DONE]
 driver.quit()
