@@ -38,7 +38,7 @@ boton = espera.until(EC.visibility_of_element_located(
 espera2 = WebDriverWait(driver, 10000)
 fin = espera2.until(EC.visibility_of_element_located((By.CLASS_NAME, "done")))
 
-end = time.timer()
+end = time.time()
 
 # recoger datos[DONE]
 
@@ -77,7 +77,8 @@ with open(file_name, 'w') as f:
         f.write('\n')
         f.write(i)
     
-    f.write('\n'+ (end - start))
+    f.write('\n')
+    f.write(end - start)
 
 # Cierra pagina[DONE]
 driver.quit()
