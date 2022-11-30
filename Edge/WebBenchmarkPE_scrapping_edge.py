@@ -11,19 +11,27 @@
 
 import time
 import datetime
+import os
 from selenium import webdriver
 from selenium.webdriver.edge.options import Options
+from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 start = time.time()
 
-url = "https://browserbench.org/JetStream/index.html"
+user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.35'
+edge_driver_path = os.path.join(os.getcwd(), 'msedgedriver')
 
-c = webdriver.EdgeOptions()
-c.add_argument("--inprivate")
-driver = webdriver.Edge(options=c)
+edge_service = Service(edge_driver_path)
+edge_options = Options()
+edge_options.add_argument(f'user-agent={user_agent}')
+edge_options.add_argument("--inprivate")
+
+driver = webdriver.Edge(service= edge_service, options= edge_options)
+
+url = "https://browserbench.org/JetStream/index.html"
 
 driver.get(url)
 
@@ -66,18 +74,20 @@ while (i < len(data_into_list)):
 # crea fichero con la hora actual [DONE]
 date = datetime.datetime.now()
 
-file_name = ('EDGE_RES_PE_D%d_H%d_M%d_S%d.txt' %
-             (date.day, date.hour, date.minute, date.second))
+file_name = ('Datos_Edge')
 
-with open(file_name, 'w') as f:
+with open(file_name, 'a') as f:
 
+    f.write('\n')
+    f.write(str(date))
+    f.write(' ')
     f.write(scores.pop(0))
 
     for i in scores:
-        f.write('\n')
+        f.write(' ')
         f.write(i)
     
-    f.write('\n')
+    f.write(' ')
     f.write(str(end - start))
 
 # Cierra pagina[DONE]
