@@ -66,18 +66,20 @@ while (i < len(data_into_list)):
 # crea fichero con la hora actual [DONE]
 date = datetime.datetime.now()
 
-file_name = ('CHROME_RES_PE_D%d_H%d_M%d_S%d.txt' %
-             (date.day, date.hour, date.minute, date.second))
+file_name = ('Datos_Chrome')
 
-with open(file_name, 'w') as f:
+with open(file_name, 'a') as f:
 
+    f.write('\n')
+    f.write(str(date))
+    f.write(' ')
     f.write(scores.pop(0))
 
     for i in scores:
-        f.write('\n')
+        f.write(' ')
         f.write(i)
     
-    f.write('\n')
+    f.write(' ')
     f.write(str(end - start))
 
 # Cierra pagina[DONE]
